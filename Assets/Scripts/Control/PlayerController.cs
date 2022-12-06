@@ -1,10 +1,10 @@
-using InventoryExample.Movement;
+using RPG.Movement;
 using UnityEngine;
 using System;
 using UnityEngine.EventSystems;
 using UnityEngine.AI;
 
-namespace InventoryExample.Control
+namespace RPG.Control
 {
     public class PlayerController : MonoBehaviour
     {

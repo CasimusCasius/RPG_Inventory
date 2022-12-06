@@ -1,9 +1,7 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 
-namespace Inventory.UI
+namespace RPG.UI
 {
     public class ShowHideUI : MonoBehaviour
     {
@@ -16,7 +14,7 @@ namespace Inventory.UI
         }
         void Update()
         {
-           if(Input.GetKeyDown(showHideKey))
+            if (Input.GetKeyDown(showHideKey))
             {
                 ShowHide();
             }
