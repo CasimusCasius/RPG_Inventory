@@ -1,10 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace RPG.Core.UI.Dragging
+﻿namespace RPG.UI.Dragging
 {
     /// <summary>
     /// Components that implement this interfaces can act as the destination for
@@ -24,6 +18,6 @@ namespace RPG.Core.UI.Dragging
         /// </summary>
         /// <param name="item">The item type.</param>
         /// <param name="number">The quantity of items.</param>
-        void AddItems(T item,int number);
+        void AddItems(T item, int number);
     }
 }

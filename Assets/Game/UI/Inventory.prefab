@@ -385,6 +385,7 @@ GameObject:
   - component: {fileID: 4700362851230595910}
   - component: {fileID: 2186591802215359377}
   - component: {fileID: 7630726763866366163}
+  - component: {fileID: 6345971363503408715}
   m_Layer: 5
   m_Name: InventoryItems
   m_TagString: Untagged
@@ -408,11 +409,11 @@ RectTransform:
   m_Father: {fileID: 4700362852409265419}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 1}
-  m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: 0, y: -0.000006039915}
-  m_SizeDelta: {x: 0, y: 360}
-  m_Pivot: {x: 0, y: 1}
+  m_AnchorMin: {x: 0, y: 0.5}
+  m_AnchorMax: {x: 1, y: 0.5}
+  m_AnchoredPosition: {x: 0, y: 0}
+  m_SizeDelta: {x: 0, y: 440}
+  m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &2186591802215359377
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -447,10 +448,23 @@ MonoBehaviour:
   m_ChildAlignment: 1
   m_StartCorner: 0
   m_StartAxis: 0
-  m_CellSize: {x: 160, y: 160}
+  m_CellSize: {x: 200, y: 200}
   m_Spacing: {x: 10, y: 10}
   m_Constraint: 0
   m_ConstraintCount: 5
+--- !u!114 &6345971363503408715
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4700362851230595909}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7629805e5d6f27244bb8581f556f629d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  inventorySlotPrefab: {fileID: 0}
 --- !u!1 &4700362851983845774
 GameObject:
   m_ObjectHideFlags: 0

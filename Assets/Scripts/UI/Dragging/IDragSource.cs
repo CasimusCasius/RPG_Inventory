@@ -1,10 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace RPG.Core.UI.Dragging
+﻿namespace RPG.UI.Dragging
 {
     public interface IDragSource<T> where T : class
     {
