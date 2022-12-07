@@ -1,0 +1,36 @@
+using System;
+using System.Collections;
+using System.Collections.Generic;
+using UnityEngine;
+namespace RPG.Inventories
+{
+    public class Pickup : MonoBehaviour
+    {
+        InventoryItem item;
+
+        Inventory inventory;
+
+        private void Awake()
+        {
+            var player = GameObject.FindWithTag("Player");
+            inventory = player.GetComponent<Inventory>();
+        }
+        public void Setup(InventoryItem item)
+        {
+            this.item = item;
+        }
+        public InventoryItem GetItem() => item;
+        public void PickupItem()
+        {
+            bool foundSlot = inventory.AddToFirstEmptySlot(item);
+            if (foundSlot)
+            {
+                Destroy(gameObject);
+            }
+        }
+
+        public bool CanBePickedUp()=> inventory.HasSpaceFor(item);
+       
+
+    }
+}

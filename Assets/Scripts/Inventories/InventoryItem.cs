@@ -16,6 +16,8 @@ namespace RPG.Inventories
         [SerializeField][TextArea] string description = null;
         [Tooltip("The UI icon to represent this item in the inventory.")]
         [SerializeField] Sprite icon = null;
+
+        [SerializeField]Pickup pickup= null;
         [Tooltip("If true, multiple items of this type can be stacked in the same inventory slot.")]
         [SerializeField] bool stackable = false;
 
@@ -43,6 +45,15 @@ namespace RPG.Inventories
             return itemLookupCache[itemID];
         }
 
+        public Pickup SpawnPickup(Vector3 position)
+        {
+            var pickup = Instantiate(this.pickup);
+            pickup.transform.position = position;
+            pickup.Setup(this);
+            return pickup;
+        }
+
+
         public string GetItemID() => itemID;
         public Sprite GetIcon() => icon;
         public bool IsStackable() => stackable;
@@ -53,16 +64,17 @@ namespace RPG.Inventories
 
         public void OnAfterDeserialize()
         {
-            if (string.IsNullOrWhiteSpace(itemID))
-            {
-                itemID = System.Guid.NewGuid().ToString();
-            }
+            // Require by the ISerializationCallbackReceiver but we don't need
+            // to do anything with it.
         }
 
         public void OnBeforeSerialize()
         {
-            // Require by the ISerializationCallbackReceiver but we don't need
-            // to do anything with it.
+           
+            if (string.IsNullOrWhiteSpace(itemID))
+            {
+                itemID = System.Guid.NewGuid().ToString();
+            }
         }
     }
 
