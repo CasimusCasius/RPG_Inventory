@@ -139,6 +139,7 @@ GameObject:
   - component: {fileID: 7050868472587333942}
   - component: {fileID: 7050868472587333943}
   - component: {fileID: 6360125014148638512}
+  - component: {fileID: 3564852161231789748}
   m_Layer: 5
   m_Name: Stats Canvas
   m_TagString: Untagged
@@ -242,6 +243,18 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   showHideKey: 105
   objectToHide: {fileID: 6965280327673115119}
+--- !u!114 &3564852161231789748
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7050868472587333945}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ea80cd83cda2bb846ae8247722703cf9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &51049735201658500
 PrefabInstance:
   m_ObjectHideFlags: 0
