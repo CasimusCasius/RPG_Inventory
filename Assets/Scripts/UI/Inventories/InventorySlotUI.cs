@@ -12,11 +12,11 @@ namespace RPG.Inventories
         int index;
         Inventory inventory;
 
-        public void Setup(Inventory inventory, int index)
-        {
+        public void Setup(Inventory inventory, int index) { 
+
             this.inventory = inventory;
             this.index = index;
-            icon.SetItem(inventory.GetItemInSlot(index));
+            icon.SetItem(inventory.GetItemInSlot(index),GetNumber());
 
         }
 
@@ -32,7 +32,7 @@ namespace RPG.Inventories
 
         public void AddItems(InventoryItem item, int number)
         {
-            inventory.AddItemToSlot(index, item);
+            inventory.AddItemToSlot(index, item,number);
         }
 
         public InventoryItem GetItem()
@@ -42,11 +42,11 @@ namespace RPG.Inventories
 
         public int GetNumber()
         {
-            return 1;
+            return inventory.GetNumberInSlot(index);
         }
         public void RemoveItems(int number)
         {
-            inventory.RemoveFromSlot(index);
+            inventory.RemoveFromSlot(index, number);
         }
     }
 }

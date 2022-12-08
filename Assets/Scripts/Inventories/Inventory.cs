@@ -12,7 +12,13 @@ namespace RPG.Inventories
         [Tooltip("Allowed size")]
         [SerializeField] int invetorySize = 16;
 
-        InventoryItem[] slots;
+        InventorySlot[] slots;
+
+        public struct InventorySlot
+        {
+            public InventoryItem item;
+            public int number;
+        }
 
         public static Inventory GetPlayerInventory()
         {
@@ -22,7 +28,7 @@ namespace RPG.Inventories
 
         private void Awake()
         {
-            slots = new InventoryItem[invetorySize];
+            slots = new InventorySlot[invetorySize];
         }
 
 
@@ -32,12 +38,13 @@ namespace RPG.Inventories
         }
 
         public int GetSize() => slots.Length;
-        public bool AddToFirstEmptySlot(InventoryItem item)
+        public bool AddToFirstEmptySlot(InventoryItem item, int number)
         {
             int i = FindSlot(item);
             if (i < 0) return false;
 
-            slots[i] = item;
+            slots[i].item = item;
+            slots[i].number += number;
             inventoryUpdated?.Invoke();
             return true;
 
@@ -51,50 +58,96 @@ namespace RPG.Inventories
             return false;
         }
 
-        public InventoryItem GetItemInSlot(int slot) => slots[slot];
-        public void RemoveFromSlot(int slot)
+        public InventoryItem GetItemInSlot(int slot) => slots[slot].item;
+        public int GetNumberInSlot(int slot) => slots[slot].number;
+        public void RemoveFromSlot(int slot, int number)
         {
-            slots[slot] = null;
+            slots[slot].number -= number;
+            if (slots[slot].number <= 0)
+            {
+                slots[slot].number = 0;
+                slots[slot].item = null;
+            }
+            
             inventoryUpdated?.Invoke();
         }
-        public bool AddItemToSlot(int slot, InventoryItem item)
+        public bool AddItemToSlot(int slot, InventoryItem item, int number)
         {
-            if (slots[slot] != null) return AddToFirstEmptySlot(item);
-            slots[slot] = item;
+            if (slots[slot].item != null) return AddToFirstEmptySlot(item,number);
+
+            var i = FindSlot(item);
+            if(i>=0)
+            {
+                slot = i;
+            }
+
+            slots[slot].item = item;
+            slots[slot].number += number;
+            
             inventoryUpdated?.Invoke();
             return true;
         }
 
         private int FindSlot(InventoryItem item)
         {
-            return FindEmptySlot();
+            int i = FindStack(item);
+            if (i<0)
+            {
+                i = FindEmptySlot();
+            }
+
+            return i;
+        }
+
+        private int FindStack(InventoryItem item)
+        {
+            if (item.IsStackable())
+            {
+                for (int i = 0; i < slots.Length; i++)
+                {
+                    if (ReferenceEquals(slots[i].item, item)) return i;
+                }
+            }
+            return -1;
         }
 
         private int FindEmptySlot()
         {
             for (int i = 0; i < slots.Length; i++)
             {
-                if (slots[i] == null) return i;
+                if (slots[i].item == null) return i;
             }
             return -1;
         }
 
+        [System.Serializable]
+        public struct InventorySlotRecord
+        {
+            public string itemID;
+            public int number;
+        }
+
         public object CaptureState()
         {
-            var slotString = new String[invetorySize];
+            var recordedSlotsStates = new InventorySlotRecord[invetorySize];
             for (int i = 0; i < invetorySize; i++)
             {
-                if (slots[i] != null) slotString[i] = slots[i].GetItemID();
+                if (slots[i].item != null)
+                {
+                    recordedSlotsStates[i].itemID = slots[i].item.GetItemID();
+                    recordedSlotsStates[i].number = slots[i].number;
+                }
             }
-            return slotString;
+            return recordedSlotsStates;
         }
 
         public void RestoreState(object state)
         {
-            var slotString = (string[])state;
-            for (int i = 0; i < invetorySize; i++)
+            var recordedStates= (InventorySlotRecord[])state;
+            for (int i = 0; i < recordedStates.Length; i++)
             {
-                slots[i] = InventoryItem.GetFromID(slotString[i]);
+                slots[i].item = InventoryItem.GetFromID(recordedStates[i].itemID);
+                slots[i].number= recordedStates[i].number;
             }
             inventoryUpdated?.Invoke();
         }

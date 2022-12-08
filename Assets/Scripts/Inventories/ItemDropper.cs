@@ -8,25 +8,27 @@ namespace RPG.Inventories
     {
         private List<Pickup> droppedItems = new List<Pickup>();
 
-        public void DropItem(InventoryItem item)
+        public void DropItem(InventoryItem item, int number)
         {
-            SpawnPickup(item, GetDropLocation());
+            SpawnPickup(item, GetDropLocation(), number);
         }
         protected virtual Vector3 GetDropLocation()
         {
             return gameObject.transform.position;
         }
-        private void SpawnPickup(InventoryItem item, Vector3 spawnLocation)
+        private void SpawnPickup(InventoryItem item, Vector3 spawnLocation, int number)
         {
             if (item == null) return;
-            var pickup = item.SpawnPickup(spawnLocation);
+            var pickup = item.SpawnPickup(spawnLocation, number);
             droppedItems.Add(pickup);
         }
         [System.Serializable]
         private struct DropRecord
         {
             public string itemID;
+            public int number;
             public SerializableVector3 position;
+            
         }
         // Save/Load
         public object CaptureState()
@@ -36,6 +38,7 @@ namespace RPG.Inventories
             for (int i = 0; i < droppedItems.Count; i++)
             {
                 state[i].itemID = droppedItems[i].GetItem().GetItemID();
+                state[i].number = droppedItems[i].GetNumber();
                 state[i].position = new SerializableVector3(droppedItems[i].transform.position);
 
             }
@@ -47,7 +50,7 @@ namespace RPG.Inventories
             foreach (var item in (DropRecord[])state)
             {
                 var pickupItem = InventoryItem.GetFromID(item.itemID);
-                SpawnPickup(pickupItem, item.position.ToVector());
+                SpawnPickup(pickupItem, item.position.ToVector(),item.number);
             }
         }
         private void RemoveDestroyedDrops()
