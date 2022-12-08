@@ -11,7 +11,7 @@ namespace RPG.UI.Inventories
         [SerializeField] GameObject container;
         [SerializeField] TextMeshProUGUI itemNumber;
 
-        public void SetItem(InventoryItem item, int number)
+        public void SetItem(InventoryItem item, int number=1)
         {
             var iconImage = GetComponent<Image>();
             if (item == null)

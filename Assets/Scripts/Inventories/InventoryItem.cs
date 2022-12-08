@@ -6,7 +6,7 @@ using static UnityEditor.Progress;
 namespace RPG.Inventories
 {
     [CreateAssetMenu(menuName = ("Inventory/Item"))]
-    public class InventoryItem : ScriptableObject, ISerializationCallbackReceiver
+    public abstract class InventoryItem : ScriptableObject, ISerializationCallbackReceiver
     {
         [Tooltip("Auto-generated UUID for saving/loading. Clear this field if you want to generate a new one.")]
         [SerializeField] string itemID = null;

@@ -19,8 +19,6 @@ namespace RPG.Inventories
             icon.SetItem(inventory.GetItemInSlot(index),GetNumber());
 
         }
-
-
         public int MaxAcceptable(InventoryItem item)
         {
             if (inventory.HasSpaceFor(item))
