@@ -57,8 +57,8 @@ namespace RPG.Inventories
         public string GetItemID() => itemID;
         public Sprite GetIcon() => icon;
         public bool IsStackable() => stackable;
-        public string DisplayName => displayName;
-        public string Description => description;
+        public string GetDisplayName() => displayName;
+        public string GetDescription() => description;
 
 
 

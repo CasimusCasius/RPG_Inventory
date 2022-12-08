@@ -1866,6 +1866,11 @@ PrefabInstance:
       propertyPath: m_Color.r
       value: 0.68235296
       objectReference: {fileID: 0}
+    - target: {fileID: 1725714223435980943, guid: 1e63abfe416b3e0419c20ac670fa7703,
+        type: 3}
+      propertyPath: tooltipPrefab
+      value: 
+      objectReference: {fileID: 0}
     - target: {fileID: 2335925965189931947, guid: 1e63abfe416b3e0419c20ac670fa7703,
         type: 3}
       propertyPath: m_CullTransparentMesh
