@@ -5,7 +5,7 @@ using static UnityEditor.Progress;
 
 namespace RPG.Inventories
 {
-    [CreateAssetMenu(menuName = ("Inventory/Item"))]
+   
     public abstract class InventoryItem : ScriptableObject, ISerializationCallbackReceiver
     {
         [Tooltip("Auto-generated UUID for saving/loading. Clear this field if you want to generate a new one.")]

@@ -16,7 +16,9 @@ namespace RPG.UI.Inventories
             var iconImage = GetComponent<Image>();
             if (item == null)
             {
+                
                 iconImage.enabled = false;
+                container.SetActive(false);
             }
             else
             {
@@ -24,7 +26,7 @@ namespace RPG.UI.Inventories
                 iconImage.enabled = true;
                 iconImage.sprite = item.GetIcon();
 
-                if (number > 1)
+                if (number > 1 && iconImage.enabled)
                 {
                     container.SetActive(true);
                     itemNumber.text = number.ToString();

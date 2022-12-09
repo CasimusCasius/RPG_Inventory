@@ -195,6 +195,30 @@ CapsuleCollider:
   m_Height: 1.79
   m_Direction: 1
   m_Center: {x: 0, y: 0.82, z: 0}
+--- !u!114 &1815489427585826676
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4902660786131331472}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 197887cdbf530fe4a9ee5f7c541f67fc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &2029271284479288860
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4902660786131331472}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5fa93ca4be0ebb6488abc32542c63e75, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!114 &2135122651860029416
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -241,7 +265,7 @@ MonoBehaviour:
     hotspot: {x: 0, y: 0}
   maxNavMeshProjectionDistance: 1
   raycastRadius: 1
---- !u!114 &2029271284479288860
+--- !u!114 &8984637627651685764
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -250,7 +274,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 4902660786131331472}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 5fa93ca4be0ebb6488abc32542c63e75, type: 3}
+  m_Script: {fileID: 11500000, guid: f7b9e4552789fea49be6c1ccc7a1f40a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
 --- !u!4 &9169026001514661365 stripped
